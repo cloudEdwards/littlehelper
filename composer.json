@@ -5,7 +5,9 @@
 	"license": "MIT",
 	"type": "project",
 	"require": {
-		"laravel/framework": "4.2.*"
+		"laravel/framework": "4.2.*",
+		"guzzlehttp/guzzle": "~5.2",
+		"stripe/stripe-php": "2.1.1"
 	},
 	"autoload": {
 		"classmap": [

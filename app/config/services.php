@@ -14,18 +14,10 @@ return array(
 	|
 	*/
 
-	'mailgun' => array(
-		'domain' => '',
-		'secret' => '',
-	),
-
+	
 	'mandrill' => array(
-		'secret' => '',
+		'secret' => $_ENV['MANDRILL_SECRET']
 	),
 
-	'stripe' => array(
-		'model'  => 'User',
-		'secret' => '',
-	),
-
+	
 );

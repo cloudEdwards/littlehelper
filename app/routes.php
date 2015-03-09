@@ -14,7 +14,7 @@
 Route::get('/', 'LittleHelperController@index');
 
 //Buy Now Page
-Route::get('/buy', 'BuyNowController@buyNow');
+Route::resource('/buy', 'BuyNowController');
 
 // About Page
 Route::get('/about', 'LittleHelperController@about');

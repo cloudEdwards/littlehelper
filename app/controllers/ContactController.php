@@ -31,17 +31,17 @@ class ContactController extends BaseController {
                 //Send email using Laravel send function
                 Mail::send('emails.hello', $data, function($message) use ($data)
                 {
-//email 'From' field: Get users email add and name
+                //email 'From' field: Get users email add and name
                     $message->from($data['email'] , $data['first_name']);
-//email 'To' field: cahnge this to emails that you want to be notified.                    
-$message->to('kumo.cloud@gmail.com', 'Cloud')->cc('')->subject('contact request test');
+                //email 'To' field: cahnge this to emails that you want to be notified.                    
+                $message->to('kumo.cloud@gmail.com', 'Cloud')->subject('LittleHelper.Chainsaw Contact');
  
                 });
  
-                return View::make('contact.index');  
+                return Redirect::to('/')->withMessage('Email Sent Successfully');  
             }else{
 //return contact form with errors
-                return Redirect::to('/contact')->withErrors($validator);
+                return Redirect::to('/contact')->withErrors($validator)->withInput();
             }
         }
 }

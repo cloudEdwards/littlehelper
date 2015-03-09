@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h2>Welcome</h2>
+	<h2>Welcome!</h2>
 
 	<img id="chainsaw" src="img/chainsaw.png" alt="a wooden toy chainsaw">
 
