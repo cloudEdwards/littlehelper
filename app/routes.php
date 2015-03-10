@@ -10,6 +10,9 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+
+	
+
 //Home Page
 Route::resource('/', 'LittleHelperController');
 

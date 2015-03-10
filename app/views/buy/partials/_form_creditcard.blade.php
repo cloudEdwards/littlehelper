@@ -1,5 +1,6 @@
 
 @if(isset($data))
+
 <p id="left">
 	*Please review your information, then enter your credit card information to complete your purchase.<br><br>
 	Quantity: {{ $data['quantity']}}<br>
@@ -11,7 +12,7 @@
 		$data['middle-name'].' '.
 		$data['last-name']}}<br>
 	Phone Number: {{ $data['phone-number']}}<br>
-	Email: {{ $data['email']}}<br>
+	Email: {{ $data['email'] }}<br>
 	Shipping Address: {{ $data['address']}}<br>
 	Province/State: {{ $data['province']}}<br>
 	Country: {{ $data['country']}}<br>
@@ -43,6 +44,7 @@
 	{{ Form::selectMonth(null, null, ['data-stripe'=>'exp-month'])}}
 	{{ Form::selectYear(null,date('Y'), date('Y')+10, null, ['data-stripe'=>'exp-year'])}}
 </label>
+{{ Form::hidden('email',$data['email'])}}
 {{ Form::submit('Confirm Purchase', ['class'=>'next button big'])}}
 
 </label>

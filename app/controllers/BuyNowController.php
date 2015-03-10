@@ -1,5 +1,6 @@
 <?php
 
+
 class BuyNowController extends \BaseController {
 
 
@@ -8,7 +9,6 @@ class BuyNowController extends \BaseController {
 
 		$this->beforeFilter('csrf', array ('on'=>['post','put', 'delete']));
 	}
-
 
 	/**
 	 * Display a listing of the resource.
@@ -37,11 +37,26 @@ class BuyNowController extends \BaseController {
 	 *
 	 * @return Response
 	 */
+
+	// bind the interface to the stripe billing class 
+	
+	
+
 	public function store()
 	{
+
 		$input = Input::all();
 
-		return View::make('buy/create')->withStripeToken($input);
+		//return View::make('buy/create')->withStripeToken($input);
+		
+		$billing = App::make('Acme\Billing\BillingInterface');
+
+		$confirmed_bill = $billing->charge( [
+			'email'=> Input::get('email'),
+			'card'=> Input::get('stripe-token')
+			]); 
+
+		return View::make('buy/confirm')->withOutput($confirmed_bill);
 	
 	}
 	

@@ -12,6 +12,9 @@
 	<link href='http://fonts.googleapis.com/css?family=Belleza' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Metamorphous' rel='stylesheet' type='text/css'>
+
+	<script src="https://js.stripe.com/v2/"></script>
+	
 </head>
 <body>
 
@@ -59,12 +62,12 @@
  	{{HTML::script('js/foundation.min.js') }}
 	{{ HTML::script('js/jquery-scrollTo/jquery.scrollTo.js'); }}
 
-	<script src="https://js.stripe.com/v2/"></script>
 	
     <script>
       $(document).foundation();
     </script>
-
+	
+	
     @yield('footer')
 
 </body>

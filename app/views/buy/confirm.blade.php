@@ -3,9 +3,10 @@
 @section('content')
 
 
-	<h2>Finalize Order</h2>
+        {{{ var_dump($output) }}}
 
-	@include('buy.partials._form_creditcard')
+
+	<h3>Payment recieved, your order has been placed. Thank You!</h3>
 
 @stop
 

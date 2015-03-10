@@ -23,7 +23,7 @@
 
     {{$errors->first('email', '<small class="error">:message</small>')}}<br>
     {{ Form:: label ('email', "Email") }}
-    {{ Form:: text ('email')}}
+    {{ Form:: email ('email')}}
 
     {{$errors->first('address', '<small class="error">:message</small>')}}<br>
     {{ Form:: label ('address', "Shipping Address") }}
