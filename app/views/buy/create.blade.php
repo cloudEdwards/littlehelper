@@ -3,7 +3,6 @@
 @section('content')
 
 	<h2>Finalize Order</h2>
-	
 
 	@include('buy.partials._form_creditcard')
 

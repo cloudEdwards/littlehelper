@@ -1,4 +1,5 @@
 
+@if(isset($data))
 <p id="left">
 	*Please review your information, then enter your credit card information to complete your purchase.<br><br>
 	Quantity: {{ $data['quantity']}}<br>
@@ -15,9 +16,15 @@
 	Province/State: {{ $data['province']}}<br>
 	Country: {{ $data['country']}}<br>
 	Postal/Zip Code: {{ $data['postal-code']}}<br>
-</p>	
+</p>
+@elseif(isset($stripe_token))
+    <div class="alert-box">
+        {{{ var_dump($stripe_token) }}}
+    </div>
+@endif
 
-{{ Form::open(['route'=>'confirm'], ['id'=>'billing-form']) }}
+
+{{ Form::open(['route'=>'buy.store', 'id'=>'billing-form']) }}
 
 <div class="payment-errors error"></div>
 

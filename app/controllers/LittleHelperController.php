@@ -67,7 +67,27 @@ class LittleHelperController extends \BaseController {
 	 */
 	public function store()
 	{
-		//
+		
+		$rules = array(
+			'quantity'=> ['required', 'numeric'], 
+			'first-name'=>'required|alpha',
+			'last-name'=>'required|alpha',
+			'phone-number'=> ['required', 'min:10'], 
+			'email'=> ['required', 'email'], 
+			'address'=>'required',
+			'province'=> 'required|alpha', 
+			'country'=>'required|alpha',
+			'postal-code'=> ['required', 'min:6']
+		 );
+
+		$input = Input::all();
+
+		$validator= Validator::make($input, $rules);
+
+		if ($validator->fails()) {
+			return Redirect::route('buy.index')->withErrors($validator->messages())->withInput($input);
+		}
+		return View::make('buy/create')->withData($input);
 	}
 
 

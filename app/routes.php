@@ -11,22 +11,14 @@
 |
 */
 //Home Page
-Route::get('/', 'LittleHelperController@index');
+Route::resource('/', 'LittleHelperController');
 
 //Buy Now Page
 Route::resource('/buy', 'BuyNowController');
 
+//Contact Page
+Route::resource('/contact', 'MailController');
+
+
 // About Page
 Route::get('/about', 'LittleHelperController@about');
-
-//Contact Page
-Route::get('/contact', 'ContactController@getContact');
- 
-//Form request:: POST action will trigger to controller
-Route::post('/contact_request','ContactController@getContactUsForm');
-
-// Temp route for creit card confirmation
-Route::post('/confirm', function(){
-
-	dd(Input::all());
-});
