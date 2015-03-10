@@ -17,7 +17,7 @@
 	Postal/Zip Code: {{ $data['postal-code']}}<br>
 </p>	
 
-{{ Form::open(['id'=>'billing-form']) }}
+{{ Form::open(['route'=>'confirm'], ['id'=>'billing-form']) }}
 
 <div class="payment-errors error"></div>
 
@@ -34,9 +34,9 @@
 	<span>Expiry Date:</span>
 	<br>
 	{{ Form::selectMonth(null, null, ['data-stripe'=>'exp-month'])}}
-	{{ Form::selectYear(null,date('y'), date('y')+10, null, ['data-stripe'=>'exp-month'])}}
+	{{ Form::selectYear(null,date('Y'), date('Y')+10, null, ['data-stripe'=>'exp-year'])}}
 </label>
-{{ Form::submit('Confirm Purchase', ['class'=>'next button'])}}
+{{ Form::submit('Confirm Purchase', ['class'=>'next button big'])}}
 
 </label>
 

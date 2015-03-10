@@ -41,7 +41,7 @@
     {{ Form:: label ('postal-code', "Postal/Zip Code") }}
     {{ Form:: text ('postal-code')}}
 
-    {{ Form:: submit ('Next' , array('class'=>'next button'))}}
+    {{ Form:: submit ('Next' , array('class'=>'next button big'))}}
 
 </div>
 

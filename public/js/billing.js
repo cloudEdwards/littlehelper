@@ -14,21 +14,26 @@
 			},
 
 			bindEvents: function() {
+
 				this.form.on('submit', $.proxy(this.sendToken, this));
+				this.submitButtonValue = this.submitButton.val();
+
 			},
 
+			
 			sendToken: function(event) {
 				event.preventDefault();
 
-				this.submitButton.val('One Moment');
+				this.submitButton.val('One Moment').prop('disabled', true);
 
-				//Stripe.createToken(this.form, $.proxy(this.stripeResponseHandler, this));
+				Stripe.createToken(this.form, $.proxy(this.stripeResponseHandler, this));
 			},
 
 			stripeResponseHandler: function(status, response) {
-
 				if (response.error){
-					return this.form.find('.payment-errors').show().text(response.error.message);
+					this.form.find('.payment-errors').show().text(response.error.message);
+					return this.submitButton.prop('disabled', false).val(this.submitButtonValue);
+				
 				}
 
 				$('<input>', {
@@ -39,7 +44,6 @@
 				}).appendTo(this.form);
 
 				//this.form[0].submit();
-
 			}
 	};
 

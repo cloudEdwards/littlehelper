@@ -24,3 +24,9 @@ Route::get('/contact', 'ContactController@getContact');
  
 //Form request:: POST action will trigger to controller
 Route::post('/contact_request','ContactController@getContactUsForm');
+
+// Temp route for creit card confirmation
+Route::post('/confirm', function(){
+
+	dd(Input::all());
+});

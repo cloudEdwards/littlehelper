@@ -216,7 +216,7 @@ label {
     font-size: 30px;
 }
 
-.next.button[value="Confirm Purchase"] { 
+.next.button.big { 
     margin: 20px auto; 
     width: 300px;
     text-align: center;
