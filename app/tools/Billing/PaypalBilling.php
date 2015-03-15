@@ -15,17 +15,17 @@ class PaypalBilling implements BillingInterface
 
 		$price = Prices::findOrFail(1);
 		$price = $price['attributes']['price'];
-		$price = intval($price * 100);
-		$shipping = intval($orderList['shipping'] *100);
-		$totalCents = intval(($price * $orderList['quantity']) 
-			+ $shipping);
-		$total = $totalCents / 100;
+		$price = number_format(floatval($price),2);
+		$shipping = number_format(floatval($orderList['shipping']),2);
+		$subTotal = number_format(floatval(($price * $orderList['quantity'])),2);
+		$total = $subTotal	+ $shipping;
+	
 
 		$dataLoad = array(
 			"actionType"=>"PAY",    // Specify the payment action
 			"currencyCode"=>"CAD",  // The currency of the payment
 			"receiverList"=>[
-				"receiver"=>[
+				"receiver"=>[ 
 					"amount"=>$total, // The payment amount
 					"email"=>"kumo.cloud@gmail.com" // The payment Receiver's email address
 				]  
