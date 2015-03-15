@@ -3,10 +3,9 @@
 @section('content')
 
         <div class="textblock">
-        	<p>Please Confirm Your Order</p>
+        	<p>Payment recieved, your order has been placed. Thank You!</p>
 		</div>
-
-		@include('buy.partials._form_confirm')
+	
 @stop
 
 

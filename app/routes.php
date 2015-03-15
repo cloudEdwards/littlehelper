@@ -11,17 +11,32 @@
 |
 */
 
-	
 
-//Home Page
-Route::resource('/', 'LittleHelperController');
+// Home Page
+Route::get('/', 'BaseController@index');
 
-//Buy Now Page
-Route::resource('/buy', 'BuyNowController');
+// Out Story Page
+Route::get('/ourStory', 'BaseController@ourStory');
+
 
 //Contact Page
-Route::resource('/contact', 'MailController');
+Route::resource('/contact', 'MailController',['except'=>[
+	'create','show','edit','update','destroy']
+	]);
 
 
-// About Page
-Route::get('/about', 'LittleHelperController@about');
+//Buy Now Page
+Route::resource('/buy', 'BuyNowController', ['except'=>[
+	'show','edit','update','destroy']
+	]);
+
+// Confirm Order
+Route::post('/buy/confirm', ['as'=>'buy.confirm', 
+	'uses'=>'BuyNowController@confirm']);
+
+// Charge Card
+Route::post('/buy/checkout', ['as'=>'buy.checkout', 
+	'uses'=>'BuyNowController@paypal']);
+
+
+

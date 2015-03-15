@@ -1,10 +1,12 @@
+
+<ul class="errors">
+    @foreach($errors->all('<small class="error">:message</small>') as $message)
+        {{ $message }}
+    @endforeach
+</ul>
+
 <div class="forms">
 
-    <ul class="errors">
-        @foreach($errors->all('<small class="error">:message</small>') as $message)
-        {{ $message }}
-        @endforeach
-    </ul>
     {{ Form:: label ('first_name', 'First Name*' )}}
     {{ Form:: text ('first_name', '' )}}
 
@@ -23,7 +25,7 @@
     {{ Form:: label ('message', 'Message*' )}}
     {{ Form:: textarea ('message', '')}}
 
-    {{ Form::reset('Clear', array('class' => 'form button')) }}
-    {{ Form::submit('Send', array('class' => 'form button')) }}
+    {{ Form::reset('Clear', array('class' => 'button big')) }}
+    {{ Form::submit('Send', array('class' => 'button big')) }}
 
 </div>

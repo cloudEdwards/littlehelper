@@ -121,8 +121,8 @@ return array(
 		'Illuminate\Validation\ValidationServiceProvider',
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
-		'Acme\Providers\BillingServiceProvider'
-
+		'tools\Providers\BillingServiceProvider',
+		'tools\Providers\ShippingServiceProvider'
 	),
 
 	/*

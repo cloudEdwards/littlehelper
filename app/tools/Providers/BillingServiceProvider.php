@@ -1,4 +1,4 @@
-<?php namespace Acme\Providers;
+<?php namespace tools\Providers;
 
 
 use Illuminate\Support\ServiceProvider;
@@ -7,7 +7,9 @@ class BillingServiceProvider extends ServiceProvider {
 	
 	public function register() 
 	{
-		$this->app->bind('Acme\Billing\BillingInterface', 'Acme\Billing\StripeBilling');
+		$this->app->bind(
+			'tools\Billing\BillingInterface', 
+			'tools\Billing\PaypalBilling');
 
 	}
 }

@@ -9,9 +9,11 @@
 	<meta charset="utf-8">
 	<meta name="publishable-key" content="{{Config::get('stripe.publishable-key')}}">
 
+	<!-- GOOGLE FONTS -->
 	<link href='http://fonts.googleapis.com/css?family=Belleza' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Metamorphous' rel='stylesheet' type='text/css'>
+	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
 	<script src="https://js.stripe.com/v2/"></script>
 	
@@ -26,7 +28,7 @@
 	  <li><a href="/">HOME</a></li>
 	  <li><a href="/buy">BUY NOW</a></li>
 	  <li><a href="/contact">CONTACT</a></li>
-	  <li><a href="/about">ABOUT</a></li>
+	  <li><a href="/ourStory">OUR STORY</a></li>
 	</ul>
 </nav>
 </div>

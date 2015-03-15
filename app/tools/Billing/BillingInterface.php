@@ -1,4 +1,4 @@
-<?php namespace Acme\Billing;
+<?php namespace tools\Billing;
 
 interface BillingInterface  {
 

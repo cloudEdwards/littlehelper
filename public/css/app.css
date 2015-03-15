@@ -14,8 +14,6 @@ footer {
     margin-top: 30px;
 }
 
-
-
 body { position: absolute; 
   background:- webkit-linear-gradient(hsla(121, 100%, 18%, 1), hsla(121, 100%, 7%, 1)); /* For Safari 5.1 to 6.0 */
   background: -o-linear-gradient(hsla(121, 100%, 18%, 1), hsla(121, 100%, 7%, 1)); /* For Opera 11.1 to 12.0 */
@@ -27,7 +25,7 @@ body { position: absolute;
   width:100%;
   height:100%;
 }
-
+h1 { font-size: 4em; }
 h1, h2 { 
     margin: 0;
     padding: 20px;
@@ -42,28 +40,14 @@ h1, h2 {
 
 h2 {margin:20px auto; width: 300px; border-radius: 7px; }
 
+p { padding: 20px;}
 
-/* Paragraph */
+a { color:saddlebrown; text-decoration: none; padding: 10px;}
 
-p { 
-    display:block;
-    color:black;
-    background-color: hsla(29, 50%, 50%, .7); 
-    width: 30em; 
-    border-radius: 4px;
-    padding: 30px; 
-    margin: 20px auto;
-    font-family: "Metamorphous", "serif";
-    font-size: 25px;
-    text-shadow: 0 0 1px hsl(0,12%,25%);
-    line-height: 100%;
-    background-image: url("/img/woodgrain1OilBig.jpg");
-    background-size: 100% auto;
-}
+a:visited { color: hsl(0,5%,40%); }
 
-p#left { text-align: left;}
+a:hover { color: wheat;}
 
-a { color:linen;}
 
 li, ul { display:inline;}
 li { margin:0;}
@@ -75,7 +59,7 @@ li { margin:0;}
 nav {
 
     position: absolute;
-    margin-top:120px;
+    margin-top:140px;
     margin-right:0;
     margin-left: 40px;
 	font-size: 30px;
@@ -84,7 +68,7 @@ nav {
     background-image: url("/img/woodgrain1OilBig.jpg");
     background-size: auto 100%;
 
-	width: 200px;
+	width: 250px;
     border-radius: 7px;
 }
 
@@ -132,17 +116,34 @@ footer div { color:black;}
 /* visited link */
 nav a:visited { color: maroon; }
 
-a:visited { color: hsl(0,5%,40%); }
 
 /* mouse over link */
 nav a:hover {
     text-shadow: 0 0 2px hsl(0,5%,65%);
-    background-color: hsla(0,5%,5%, .5);
+    background-color: hsla(15,55%,85%, .3);
 }
 
-a:hover { color: hsl(0,5%,65%);}
 
 
+/* Text Block */
+
+.textblock { 
+    display:block;
+    color:black;
+    background-color: hsla(29, 50%, 50%, .7); 
+    width: 60%; 
+    border-radius: 5px;
+    padding: 0; 
+    margin: 20px auto;
+    font-family: "Roboto", "sans-serif";
+    font-size: 25px;
+    text-shadow: 0 0 1px hsl(0,12%,25%);
+    line-height: 100%;
+    background-image: url("/img/woodgrain1OilBig.jpg");
+    background-size: 100% auto;
+}
+
+.textblock#left { text-align: left;}
 
 
 #chainsaw { 
@@ -156,7 +157,7 @@ a:hover { color: hsl(0,5%,65%);}
 .forms { background-image: url("/img/woodgrain1OilBig.jpg"); 
     background-size: 100% auto;
     margin: 0 auto; 
-    width: 650px;
+    width: 60%;
     text-align: left;
     border-radius: 5px;
 }
@@ -176,6 +177,7 @@ select, label, input,textarea {
     background-size: 100% auto; 
     margin:5px;
     padding:5px;
+    margin-left: 25px;
     width: auto;
     color: maroon;
     font-size: 14px;
@@ -201,53 +203,65 @@ input[type="submit"] {  border-radius:7px; margin-top: 0; }
 label { 
     color: maroon;  
     width: 300px;
-    margin-right: 1em;
     font-size: 20px;
     font-family: 'Metamorphous', "Serif";
     text-shadow: 0 0 1px hsl(0,12%,25%);  
 }
 
-.forms span { width: 400px; }
+#cardno { width:400px; }
 
-.next.button { 
+table, td, tr, th { padding: 5px; margin: 0 auto; line-height: 30px; text-align: center; border:solid; background-color:wheat;}
+th {text-align: left;}
+
+.small.form { width: 80px; margin-left: 5px; }
+label.small.form[for='apt'] { margin-left: 25px; }
+
+input#apt, input#pobox, input#rr { width: 80px; margin:0;}
+
+
+.button { 
+    background-color: wheat;
     margin: 20px 250px; 
-    width: 100px;
+    width: 80px;
+    padding:10px;
     text-align: center;
     font-size: 30px;
+    -webkit-transition: background-color .5s, color .5s;
+    transition: background-color .5s, color .5s;
 }
 
-.next.button.big { 
-    margin: 20px auto; 
-    width: 300px;
+.button.big { 
+    margin: 20px auto;
+    margin-bottom: 0;
+    width:100%;
     text-align: center;
     font-size: 25px;
+    border-radius: 0 0 5px 5px;
 }
+div.button.big {padding:0;}
+
+.button:hover { background-color: saddlebrown; color:wheat; } 
 
 
-
-html,
-body {
-    
-}
-#wrapper {
+.wrapper {
     min-height:100%;
     position:relative;
 }
-#header {
+.header {
     padding:10px;
-    background:#5ee;
+
 }
-#content {
+.content {
     padding:10px;
     padding-bottom:80px;   /* Height of the footer element */
 }
-#footer {
+.footer {
     width:100%;
     height:80px;
     position:absolute;
     bottom:0;
     left:0;
-    background:#ee5;
+
 }
 
 .error { background-color: tomato; }
