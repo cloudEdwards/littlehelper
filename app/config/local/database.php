@@ -22,7 +22,7 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => 'localhost',
+			'host'      => '107.170.248.71',
 			'database'  => 'littlehelper',
 			'username'  => 'homestead',
 			'password'  => 'secret',
