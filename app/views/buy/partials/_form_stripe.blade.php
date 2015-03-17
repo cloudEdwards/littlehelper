@@ -1,4 +1,4 @@
-
+{{ Form::open(['route'=>'buy.store', 'id'=>'billing-form']) }}
 
 <div class="textblock">
 	<p>To safely complete your purchase;</p>

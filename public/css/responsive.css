@@ -14,3 +14,12 @@ change text to smaller size
 make textblock more narrow with smaller screen width
 
 */
+
+
+@media screen and (max-width: 920px) {
+	
+	nav {width:30%;}
+
+	.textblock { width:65%;}
+
+}
