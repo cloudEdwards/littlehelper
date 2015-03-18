@@ -24,7 +24,7 @@ return array(
 			'driver'    => 'mysql',
 			'host'      => '107.170.248.71',
 			'database'  => 'littlehelper',
-			'username'  => 'homestead',
+			'username'  => 'forge',
 			'password'  => 'secret',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
