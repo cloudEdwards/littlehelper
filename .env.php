@@ -1,0 +1,13 @@
+<?php 
+
+return [ 
+
+	'MANDRILL_SECRET'=>'tK1Xe1uZFLzodMR1LY5hhQ',
+
+	'CANPOST_USER'=>'168a1dacba515db4',
+
+	'CANPOST_PASSWORD'=>'794017dc0253ab51683e22',
+
+	'CANPOST_CUSTNUM'=>'0008346370'
+
+ ];
