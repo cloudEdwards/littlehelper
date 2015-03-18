@@ -1,5 +1,7 @@
 <?php
 
+use BillingLog;
+use Prices;
 
 class BuyNowController extends \BaseController {
 
@@ -68,9 +70,8 @@ class BuyNowController extends \BaseController {
 			    $message->to($email, 'Cloud')->subject('New Order!');
 			});
 
-		// this line loads the library 
-		//require('/path/to/twilio-php/Services/Twilio.php'); 
-		 
+		// Send Text Message
+
 		$account_sid = 'ACb6f468752fecc4eb3ebf70648b71e347'; 
 		$auth_token = '4575f860099381b42b4a60bcac14f84f'; 
 		$client = new Services_Twilio($account_sid, $auth_token); 
@@ -160,58 +161,50 @@ class BuyNowController extends \BaseController {
 		$result = $result->charge(['hash'=>$input['hash']]);
 
 		$url = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey='
-				.$result;
-		//dd($url);	
+				.$result['payKey'];
+
+//  Send Invoicing correspondance
+		$order = BillingLog::findOrFail($input['hash'])['attributes'];
+		$price = Prices::findOrFail(1);
+
+		$confirmed_bill = [
+				'data'=>$input,
+				'order'=>$order,
+				'price'=>$result['price'],
+				'total'=>$result['total']
+				];
+		
+		$order = $confirmed_bill['order'];
+		$email = $order['email'];
+		$msg = "Hello ";
+
+		// Send Customer Invoice
+		Mail::send('emails.invoice', ['invoice'=>$confirmed_bill], function($message) use ($email)
+			{
+			    $message->to($email, 'Cloud')->subject('Thank You!');
+			});
+		// Send Order to Manufacturer
+		Mail::send('emails.order', ['invoice'=>$confirmed_bill], function($message)  use ($email)
+			{
+			    $message->to($email, 'Cloud')->subject('New Order!');
+			});
+
+		// Send Text Message
+
+		$account_sid = 'ACb6f468752fecc4eb3ebf70648b71e347'; 
+		$auth_token = '4575f860099381b42b4a60bcac14f84f'; 
+		$client = new Services_Twilio($account_sid, $auth_token); 
+		 
+		$client->account->messages->create(array( 
+			'To' => "12503543711", 
+			'From' => "+13345641913", 
+			'Body' => "You have a New Order from LittleHelper.Chainsaw, check your email.",   
+		));
+
+
+
+
 		return View::make('buy/paypal')->withUrl($url);
-	}
-
-	
-	
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		//
-	}
-
-	/**
-	 * Show the form for editing the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function edit($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Update the specified resource in storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function update($id)
-	{
-		//
-	}
-
-
-	/**
-	 * Remove the specified resource from storage.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function destroy($id)
-	{
-		//
 	}
 
 

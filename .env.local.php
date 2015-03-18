@@ -2,7 +2,7 @@
 
 return [ 
 
-	'MANDRILL_SECRET'=>'tK1Xe1uZFLzodMR1LY5hhQ',
+	'MANDRILL_SECRET'=>'ntMaHkLmBB0oalDNaeqSJQ',
 
 	'CANPOST_USER'=>'168a1dacba515db4',
 

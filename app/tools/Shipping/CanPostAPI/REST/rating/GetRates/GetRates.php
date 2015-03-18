@@ -31,7 +31,7 @@ namespace tools\Shipping\CanPostAPI\REST\rating\GetRates;
 			$service_url = 'https://ct.soa-gw.canadapost.ca/rs/ship/price';
 
 			// Create GetRates request xml
-			$originPostalCode = 'V1L6Y6'; 
+			$originPostalCode = 'V1L 4E7'; 
 			$postalCode = $zipCode;
 			//'B3J1S3'  Halifax
 			$weight = 0.7 * $quantity;

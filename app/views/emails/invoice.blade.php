@@ -10,7 +10,7 @@
 
 <h2>Thank you for your business!</h2>
 
-<p>We will send your order as soon as we can</p>
+<p>We will send your order as soon as we confirm the transaction on our end.</p>
 
 <h3><small>Invoice Code: {{$order['id']}}</small></h3>
 <h3>Price: ${{number_format($price/100,2)}}</h3>

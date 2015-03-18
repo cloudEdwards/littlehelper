@@ -27,7 +27,7 @@ Route::resource('/contact', 'MailController',['except'=>[
 
 //Buy Now Page
 Route::resource('/buy', 'BuyNowController', ['except'=>[
-	'show','edit','update','destroy']
+	'show','edit','destroy']
 	]);
 
 // Confirm Order
@@ -38,5 +38,8 @@ Route::post('/buy/confirm', ['as'=>'buy.confirm',
 Route::post('/buy/checkout', ['as'=>'buy.checkout', 
 	'uses'=>'BuyNowController@paypal']);
 
+// Successful Order
+Route::post('/buy/success', ['as'=>'buy.success', 
+	'uses'=>'BuyNowController@success']);
 
 

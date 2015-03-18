@@ -18,7 +18,7 @@ class PaypalBilling implements BillingInterface
 		$price = number_format(floatval($price),2);
 		$shipping = number_format(floatval($orderList['shipping']),2);
 		$subTotal = number_format(floatval(($price * $orderList['quantity'])),2);
-		$total = $subTotal	+ $shipping;
+		$total = $subTotal + $shipping;
 	
 
 		$dataLoad = array(
@@ -32,10 +32,10 @@ class PaypalBilling implements BillingInterface
 			],
 
 			// Where the Sender is redirected to after approving a successful payment
-			"returnUrl"=>"http://littlehelper.chainsaw:8000/about",
+			"returnUrl"=>"http://www.littlehelpersaws.com/ourStory",
 
 			// Where the Sender is redirected to upon a canceled payment
-			"cancelUrl"=>"http://littlehelper.chainsaw:8000/contact",
+			"cancelUrl"=>"http://www.littlehelpersaws.com/ourStory",
 			"requestEnvelope"=>[
 				"errorLanguage"=>"en_US",    // Language used to display errors
 				"detailLevel"=>"ReturnAll"   // Error detail level
@@ -66,7 +66,13 @@ class PaypalBilling implements BillingInterface
 		$resultJson = curl_exec($ch);
 		$output = json_decode($resultJson);
 		$payKey = $output->payKey;
-		return $payKey;
+
+		return [
+			'payKey'=>$payKey,
+			'price'=>$price,
+			'shipping'=>$shipping,
+			'total'=>$total
+		];
 	}
 }
 

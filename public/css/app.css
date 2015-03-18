@@ -134,7 +134,7 @@ nav a:hover, nav a:focus {
     border-radius: 5px;
     padding: 0; 
     margin: 20px auto;
-    margin-left: 30%;
+    margin-left: 25%;
     margin-right: auto;
     font-family: "Roboto", "sans-serif";
     font-size: 25px;
@@ -152,12 +152,14 @@ nav a:hover, nav a:focus {
     -webkit-transform: scale(4,4);  /*Chrome, Safari, Opera */
     transform: scale(4,4); 
     margin: 40px auto;
+    margin-left: 25%;
     margin-bottom: 170px;
 }
 
 .forms { background-image: url("/img/woodgrain1OilBig.jpg"); 
     background-size: 100% auto;
     margin: 0 auto; 
+    margin-left: 25%;
     width: 60%;
     text-align: left;
     border-radius: 5px;
