@@ -1,5 +1,5 @@
 /bootstrap/compiled.php
 /vendor
-composer.phar.env.*.php
+composer.phar.*.php
 .DS_Store
 Thumbs.db
