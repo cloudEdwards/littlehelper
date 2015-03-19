@@ -17,7 +17,7 @@
 			
 			<li><img id="chainsaw" src="img/oldsaw2.png" alt="an old wooden toy chainsaw"></li>
 
-			<li><img id="grampa" src="img/gramps.jpg" alt="an elderly man holding a wooden toy chainsaw, with a young boy sitting on a stack of fire wood"></li>
+			<li><img id="grampa" src="img/grampa.jpg" alt="an elderly man holding a wooden toy chainsaw, with a young boy sitting on a stack of fire wood"></li>
 		</ul>
 
 	</div>
