@@ -146,15 +146,23 @@ nav a:hover, nav a:focus {
 
 .textblock#left { text-align: left;}
 
+img.about { border-radius: 50%; 
+    border-style: solid; 
+    border-width: 10px;
+    border-color: peru;
+}
 
-#chainsaw { 
-    -ms-transform: scale(4,4); /* IE 9 */
-    -webkit-transform: scale(4,4);  /*Chrome, Safari, Opera */
-    transform: scale(4,4); 
+#chainsaw.main {  
     margin: 40px auto;
     margin-left: 25%;
-    margin-bottom: 170px;
+    margin-bottom: 10px;
 }
+
+.story li { display: inline-block; margin:10px 10px;}
+
+img.story#chainsaw {margin: 10px 10px;}
+
+#grampa { border-radius:20px; border: solid peru;}
 
 .forms { background-image: url("/img/woodgrain1OilBig.jpg"); 
     background-size: 100% auto;

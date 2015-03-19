@@ -22,9 +22,9 @@ return array(
 
 		'mysql' => array(
 			'driver'    => 'mysql',
-			'host'      => '107.170.248.71',
+			'host'      => 'localhost',
 			'database'  => 'littlehelper',
-			'username'  => 'forge',
+			'username'  => 'root',
 			'password'  => 'secret',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',

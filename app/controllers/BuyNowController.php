@@ -201,10 +201,8 @@ class BuyNowController extends \BaseController {
 			'Body' => "You have a New Order from LittleHelper.Chainsaw, check your email.",   
 		));
 
-
-
-
-		return View::make('buy/paypal')->withUrl($url);
+		return Redirect::to($url);
+		//return View::make('buy/paypal')->withUrl($url);
 	}
 
 
