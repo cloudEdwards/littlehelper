@@ -24,14 +24,13 @@
 <div class="wrapper">
 
 <div class="nav">		
-<nav>
-	<ul>
-	  <li><a href="/">HOME</a></li>
-	  <li><a href="/buy">BUY NOW</a></li>
-	  <li><a href="/contact">CONTACT</a></li>
-	  <li><a href="/ourStory">OUR STORY</a></li>
-	</ul>
-</nav>
+	<nav>
+		<ul>
+		  <li><a href="/">HOME</a></li>
+		  <li><a href="/buy">BUY NOW</a></li>
+		  <li><a href="/contact">CONTACT</a></li>
+		</ul>
+	</nav>
 </div>
 
 <h1>Little Helper Chainsaws</h1>
@@ -54,7 +53,7 @@
 			  <li><a href="/">HOME</a></li>
 			  <li><a href="/buy">BUY NOW</a></li>
 			  <li><a href="/contact">CONTACT</a></li>
-			  <li><a href="/about">ABOUT</a></li>
+			 
 			</ul>
 			<div>Copyright&copy;Cloud Edwards <?php echo date('Y'); ?></div>
 		</footer>

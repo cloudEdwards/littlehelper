@@ -15,9 +15,6 @@
 // Home Page
 Route::get('/', 'BaseController@index');
 
-// Out Story Page
-Route::get('/ourStory', 'BaseController@ourStory');
-
 
 //Contact Page
 Route::resource('/contact', 'MailController',['except'=>[

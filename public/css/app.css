@@ -29,6 +29,7 @@ h1 { font-size: 5vw; }
 h1, h2 { 
     margin: 0;
     padding: 20px;
+    height:5%;
     color: maroon;
     font-family: "Metamorphous", "serif";
     font-weight: bold;
@@ -40,7 +41,6 @@ h1, h2 {
 
 h2 {margin:20px auto; width: 300px; border-radius: 7px; }
 
-p { padding: 20px;}
 
 a { color:saddlebrown; text-decoration: none; padding: 10px;}
 
@@ -66,15 +66,15 @@ nav {
 	background-color:  hsla(29, 50%, 50%, .7);
     background-image: url("/img/woodgrain1OilBig.jpg");
     background-size: auto 100%;
-
-	width: 20%;
+	width: 15%;
     border-radius: 7px;
 }
 
 nav ul {
     list-style-type: none;
     text-align: center;
-    margin: 0
+    margin: 0 ;
+    padding:0;
 }
 
 
@@ -90,7 +90,7 @@ nav a {
     margin: 0;
     width: auto;
     text-shadow: 4px 0 6px hsl(0,12%,45%);
-
+    transition: text-shadow 1s, background-color 1s;
 }
 
 nav a[href="/"] { -webkit-border-top-left-radius: 6px;
@@ -100,7 +100,7 @@ nav a[href="/"] { -webkit-border-top-left-radius: 6px;
 border-top-left-radius: 6px;
 border-top-right-radius: 6px;} 
 
-nav a[href="/about"] { -webkit-border-bottom-right-radius: 6px;
+nav a[href="/contact"] { -webkit-border-bottom-right-radius: 6px;
 -webkit-border-bottom-left-radius: 6px;
 -moz-border-radius-bottomright: 6px;
 -moz-border-radius-bottomleft: 6px;
@@ -113,16 +113,13 @@ footer li { display: inline;}
 footer div { color:black;}
 
 /* visited link */
-nav a:visited { color: maroon; }
-
+nav a:visited { color: maroon;   }
 
 /* mouse over link */
 nav a:hover, nav a:focus {
-    text-shadow: 0 0 2px hsl(0,5%,65%);
-    background-color: hsla(15,55%,85%, .3);
+    text-shadow: 0 0 2px hsl(0, 100%, 46%);
+    background-color: hsla(30, 10%, 20%, .1); 
 }
-
-
 
 /* Text Block */
 
@@ -132,10 +129,8 @@ nav a:hover, nav a:focus {
     background-color: hsla(29, 50%, 50%, .7); 
     width: 60%; 
     border-radius: 5px;
-    padding: 0; 
+    padding: 10px; 
     margin: 20px auto;
-    margin-left: 25%;
-    margin-right: auto;
     font-family: "Roboto", "sans-serif";
     font-size: 25px;
     text-shadow: 0 0 1px hsl(0,12%,25%);
@@ -144,9 +139,44 @@ nav a:hover, nav a:focus {
     background-size: 100% auto;
 }
 
-.textblock#left { text-align: left;}
+.textblock.top { margin-left: 20%; margin-right: auto; }
 
-img.about { border-radius: 50%; 
+.home > .textblock.top{ 
+    margin: 5px auto;  
+    float:right; 
+    display:inline-block;
+}
+
+.textblock.buy a { 
+    color:saddlebrown; 
+    font-size: 50px;
+    text-shadow: 1px 3px 2px hsl(0, 5%, 6%);
+    transition: text-shadow .4s, color .4s;
+}
+
+.textblock.buy:hover a,.textblock.buy:focus a{
+    color:maroon;
+    text-shadow: 1px 3px 6px hsl(-10, 80%, 6%)
+}
+
+.textblock#left { text-align: left;}
+.textblock.bio { width: 10%; }
+#holder>.textblock.bio { width: 30%; }
+.textblock.bio.large {
+
+    display:inline-block;
+    width: 30%;
+    margin: 10px 5px;
+}
+.textblock.bio.large.main {
+    margin: 10px 5%;
+    width: 45%;
+}
+#holder { text-align: center;  
+    display:inline-block;}
+
+img.bio { 
+    border-radius: 50%; 
     border-style: solid; 
     border-width: 10px;
     border-color: peru;
@@ -158,11 +188,16 @@ img.about { border-radius: 50%;
     margin-bottom: 10px;
 }
 
-.story li { display: inline-block; margin:10px 10px;}
+.home { margin: 0 auto; }
 
-img.story#chainsaw {margin: 10px 10px;}
+.home li { display: inline-block; margin:10px 10px;}
 
-#grampa { border-radius:20px; border: solid peru;}
+img.home#chainsaw {margin: 10px 10px;}
+
+#grampa { border-radius:20px;
+    border: solid peru;
+    margin: 10px auto;
+}
 
 .forms { background-image: url("/img/woodgrain1OilBig.jpg"); 
     background-size: 100% auto;
@@ -268,10 +303,8 @@ div.button.big {padding:0;}
 }
 .header {
     padding:10px;
-
 }
 .content {
-
     padding:10px;
     padding-bottom:80px;   /* Height of the footer element */
 }
@@ -281,7 +314,6 @@ div.button.big {padding:0;}
     position:absolute;
     bottom:0;
     left:0;
-
 }
 
 .error { background-color: tomato; }
