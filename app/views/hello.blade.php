@@ -6,14 +6,11 @@
 
 	<img id="chainsaw" src="img/chainsaw.png" alt="a wooden toy chainsaw">
 
-	<div class="textblock buy">
-		<a href="/buy">Get Your Chainsaw Now</a>
-	</div>
 
 <div class="home">
 
 	<div class="textblock">
-		<p>Handmade Wooden Toy Chainsaw ~ $81.73 Cad. + Shipping </p>           
+		<p>Handmade Wooden Toy Chainsaw ~ $85.00 Cad. + Shipping and Tax</p>           
 	</div>
 
 	<img id="chainsaw" src="img/chainsaw2.png" alt="a wooden toy chainsaw">
@@ -59,19 +56,20 @@
 
 	<div id="holder">	
 		<div class="textblock bio">
-			<strong>The New...</strong>
+			<strong>... and the New.</strong>
 		</div>
 		<ul>
-			<li><img id="chainsaw" src="img/newsaw1.png" alt="an brand new wooden toy chainsaw"></li>
-			
 			<li><img id="chainsaw" src="img/newsaw2.png" alt="an brand new wooden toy chainsaw"></li>
+
+			<li><img id="chainsaw" src="img/newsaw1.png" alt="an brand new wooden toy chainsaw"></li>
+	
 		</ul>
 
 		
 	</div>
 
 	<div class="textblock buy">
-		<a href="/buy">Get Your Chainsaw Now</a>
+		<a href="/buy">To Order Click Here</a>
 	</div>
 
 </div>

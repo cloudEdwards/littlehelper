@@ -4,6 +4,8 @@
 
 	<h2>Buy Now</h2>
 
+	<img id="chainsaw" src="img/chainsaw.png" alt="a wooden toy chainsaw">
+
     {{ Form::open( array("route" => "buy.confirm") ) }}
 
     @include('buy.partials._form')
