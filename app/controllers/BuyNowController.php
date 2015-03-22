@@ -43,7 +43,6 @@ class BuyNowController extends \BaseController {
 
 	public function store()
 	{
-
 		$input = Input::all();
 
 		
@@ -84,51 +83,6 @@ class BuyNowController extends \BaseController {
 
 
 		return View::make('buy/complete')->withOutput($confirmed_bill);
-	
-	}
-
-		/**
-	 * Show the form for creating a new resource.
-	 *
-	 * @return Response
-	 */
-	public function complete()
-	{	
-
-		$hash = Input::get('hash');
-		$order = BillingLog::findOrFail($hash);
-		$order->confirmed = 'true';
-		$order->save();
-
-		$confirmed_bill=$order['attributes'];
-		$email = $confirmed_bill['email'];
-// !!!*!*!*!****!*!Replace with Angels Email
-		$shopEmail = 'kumo.cloud@gmail.com';
-		
-		// Send Customer Invoice
-		Mail::send('emails.invoice', ['invoice'=>$confirmed_bill], function($message) use ($email)
-			{
-			    $message->to($email, 'Cloud')->subject('Thank You!');
-			});
-		// Send Order to Manufacturer
-		Mail::send('emails.order', ['invoice'=>$confirmed_bill], function($message)  use ($shopEmail)
-			{
-			    $message->to($shopEmail, 'Cloud')->subject('New Order!');
-			});
-
-		// Send Text Message
-
-		$account_sid = 'ACb6f468752fecc4eb3ebf70648b71e347'; 
-		$auth_token = '4575f860099381b42b4a60bcac14f84f'; 
-		$client = new Services_Twilio($account_sid, $auth_token); 
-		 
-		$client->account->messages->create(array( 
-			'To' => "12503543711", 
-			'From' => "+13345641913", 
-			'Body' => "You have a New Order from LittleHelper.Chainsaw, check your email.",   
-		));
-
-		return View::make('buy/complete');
 	}
 
 
@@ -201,7 +155,7 @@ class BuyNowController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function paypal()
+	public function checkout()
 	{
 		$input = Input::all();
 
@@ -212,7 +166,7 @@ class BuyNowController extends \BaseController {
 		$url = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey='
 				.$result['payKey'];
 
-//  Send Invoicing correspondance
+		//  Send Invoicing correspondance
 		$order = BillingLog::findOrFail($input['hash'])['attributes'];
 		$price = Prices::findOrFail(1);
 
@@ -252,6 +206,51 @@ class BuyNowController extends \BaseController {
 
 		return Redirect::to($url);
 		//return View::make('buy/paypal')->withUrl($url);
+	}
+
+
+	/**
+	 * Upon Completed Purchase,  
+	 *
+	 * @return Response
+	 */
+	public function complete()
+	{	
+
+		$hash = Input::get('hash');
+		$order = BillingLog::findOrFail($hash);
+		$order->completed = 'true';
+		$order->save();
+
+		$confirmed_bill=$order['attributes'];
+		$email = $confirmed_bill['email'];
+		// !!!*!*!*!****!*!Replace with Angels Email
+		$shopEmail = 'kumo.cloud@gmail.com';
+		
+		// Send Customer Invoice
+		Mail::send('emails.invoice', ['invoice'=>$confirmed_bill], function($message) use ($email)
+			{
+			    $message->to($email, 'Cloud')->subject('Thank You!');
+			});
+		// Send Order to Manufacturer
+		Mail::send('emails.order', ['invoice'=>$confirmed_bill], function($message)  use ($shopEmail)
+			{
+			    $message->to($shopEmail, 'Cloud')->subject('New Order!');
+			});
+
+		// Send Text Message
+
+		$account_sid = 'ACb6f468752fecc4eb3ebf70648b71e347'; 
+		$auth_token = '4575f860099381b42b4a60bcac14f84f'; 
+		$client = new Services_Twilio($account_sid, $auth_token); 
+		 
+		$client->account->messages->create(array( 
+			'To' => "12503543711", 
+			'From' => "+13345641913", 
+			'Body' => "You have a New Order from LittleHelper.Chainsaw, check your email.",   
+		));
+
+		return View::make('buy/complete');
 	}
 
 
