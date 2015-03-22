@@ -35,9 +35,9 @@
 			?>
 
 			<tr><th>Price: </th> <td>${{{$price}}} Cad.</td></tr> 
-			<tr><th>Shipping Rate: </th> <td>${{{$shippingRate}}} Cad.</td></tr><tr><th>Sales Tax: </th> <td>${{{$tax}}} Cad.</td></tr>
+			<tr><th>Shipping Rate: </th> <td>${{{$shippingRate}}} Cad.</td></tr><tr><th>Sales Tax: </th> <td>${{{number_format($tax,2)}}} Cad.</td></tr>
 			<tr><th>Total: </th> 
-				<td><strong>${{{$total}}} Cad.</strong></td></tr>
+				<td><strong>${{{number_format($total,2)}}} Cad.</strong></td></tr>
 		</table>
 		
 
