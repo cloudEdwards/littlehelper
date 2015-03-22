@@ -92,9 +92,10 @@ class BuyNowController extends \BaseController {
 	 *
 	 * @return Response
 	 */
-	public function complete($hash)
+	public function complete()
 	{	
 
+		$hash = Input::get('hash');
 		$order = BillingLog::findOrFail($hash);
 		$order->confirmed = 'true';
 		$order->save();
