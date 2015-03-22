@@ -37,8 +37,7 @@ class PaypalBilling implements BillingInterface
 			$data['hash'],
 
 			// Where the Sender is redirected to upon a canceled payment
-			"cancelUrl"=>"http://www.littlehelpersaws.com/buy/complete?hash=".
-			$data['hash'],
+			"cancelUrl"=>"http://www.littlehelpersaws.com,
 			"requestEnvelope"=>[
 				"errorLanguage"=>"en_US",    // Language used to display errors
 				"detailLevel"=>"ReturnAll"   // Error detail level
