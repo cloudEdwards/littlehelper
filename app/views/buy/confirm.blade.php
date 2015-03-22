@@ -3,8 +3,9 @@
 @section('content')
 
 		@include('buy.partials._form_confirm')
-@stop
 
+    
+@stop
 
 @section('footer')
 	
