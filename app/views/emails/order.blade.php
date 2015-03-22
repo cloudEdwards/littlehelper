@@ -7,7 +7,7 @@
 
 <h2>A Customer Placed an Order!</h2>
 
-<p>The chainsaw/s should be send as the soon as payent is recieved in PayPal account</p>
+<p>The chainsaw's should be send as the soon as payent is recieved in PayPal account</p>
 
 
 <h3><small>Invoice Code: {{$order['id']}}</small></h3>
