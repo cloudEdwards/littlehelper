@@ -14,6 +14,7 @@
 <h3>Quantity: {{$order['quantity']}}</h3>
 
 <h3>Shipping: ${{number_format($order['shipping'],2)}}</h3>
+<h3>Tax: ${{number_format($order['tax'],2)}}</h3>
 
 <h3><strong>Total: ${{number_format($total,2)}}</strong></h3>
 <br>
