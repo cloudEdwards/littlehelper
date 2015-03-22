@@ -27,7 +27,7 @@
 	<nav>
 		<ul>
 		  <li><a href="/">HOME</a></li>
-		  <li><a href="/buy">BUY NOW</a></li>
+		  <li><a href="/buy">ORDERING</a></li>
 		  <li><a href="/contact">CONTACT</a></li>
 		</ul>
 	</nav>

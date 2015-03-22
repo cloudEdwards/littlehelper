@@ -87,6 +87,17 @@ class BuyNowController extends \BaseController {
 	
 	}
 
+		/**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function complete()
+	{	
+		return View::make('buy/complete');
+	}
+
+
 	/**
 	 * Display the specified resource.
 	 *
@@ -123,12 +134,15 @@ class BuyNowController extends \BaseController {
 		$invoiceHash = Hash::make('secret');
 
 		$price = Prices::findOrFail(1)['attributes']['price'];
+		$subTotal = $price * $input['quantity'];
+		$tax = $subTotal * 0.12;
 
 		$bill = new BillingLog();
 		$bill->id= $invoiceHash;
 		$bill->shipping=$rates[0][1];
 		$bill->quantity=$input['quantity'];
-		$bill->amount= $price * $input['quantity'] + $rates[0][1];
+		$bill->tax= $tax;
+		$bill->amount= $subTotal + $rates[0][1];
 		$bill->name=$input['first-name'].' '.$input['middle-name'].' '.$input['last-name'];
 		$bill->phonenumber=$input['phone-number'];
 		$bill->email=$input['email'];
@@ -144,7 +158,8 @@ class BuyNowController extends \BaseController {
 		return View::make('buy.create')
 			->withData($input)
 			->withShippingRates($rates)
-			->withHash($invoiceHash);
+			->withHash($invoiceHash)
+			->withTax($tax);
 	}
 
 		/**

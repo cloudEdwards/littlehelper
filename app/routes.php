@@ -31,6 +31,11 @@ Route::resource('/buy', 'BuyNowController', ['except'=>[
 Route::post('/buy/confirm', ['as'=>'buy.confirm', 
 	'uses'=>'BuyNowController@confirm']);
 
+// Completed Order
+Route::get('/buy/complete', ['as'=>'buy.complete', 
+	'uses'=>'BuyNowController@complete']);
+
+
 // Charge Card
 Route::post('/buy/checkout', ['as'=>'buy.checkout', 
 	'uses'=>'BuyNowController@paypal']);

@@ -2,7 +2,7 @@
 
 @section('content')
 
-	<h2>Buy Now</h2>
+	<h2>Ordering</h2>
 
 	<img id="chainsaw" src="img/chainsaw.png" alt="a wooden toy chainsaw">
 

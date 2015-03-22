@@ -29,13 +29,13 @@
 				$price = $price['attributes']['price'];
 				$price = number_format($price,2);
 				$shippingRate = floatval($shipping_rates[0][1]);
-				$subTotal = $price * $quantity + $shippingRate;
+				$subTotal = $price * $quantity + $shippingRate + $tax; 
 				$total = number_format($subTotal,2);
 				$totalCents = $total *100;
 			?>
 
 			<tr><th>Price: </th> <td>${{{$price}}} Cad.</td></tr> 
-			<tr><th>Shipping Rate: </th> <td>${{{$shippingRate}}} Cad.</td></tr>
+			<tr><th>Shipping Rate: </th> <td>${{{$shippingRate}}} Cad.</td></tr><tr><th>Sales Tax: </th> <td>${{{$tax}}} Cad.</td></tr>
 			<tr><th>Total: </th> 
 				<td><strong>${{{$total}}} Cad.</strong></td></tr>
 		</table>

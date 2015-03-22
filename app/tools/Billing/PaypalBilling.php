@@ -17,8 +17,9 @@ class PaypalBilling implements BillingInterface
 		$price = $price['attributes']['price'];
 		$price = number_format(floatval($price),2);
 		$shipping = number_format(floatval($orderList['shipping']),2);
+		$tax = number_format(floatval($orderList['tax']),2);
 		$subTotal = number_format(floatval(($price * $orderList['quantity'])),2);
-		$total = $subTotal + $shipping;
+		$total = $subTotal + $shipping + $tax;
 	
 
 		$dataLoad = array(
@@ -32,10 +33,12 @@ class PaypalBilling implements BillingInterface
 			],
 
 			// Where the Sender is redirected to after approving a successful payment
-			"returnUrl"=>"http://www.littlehelpersaws.com/ourStory",
+			"returnUrl"=>"http://www.littlehelpersaws.com/buy/complete?hash=".
+			$data['hash'],
 
 			// Where the Sender is redirected to upon a canceled payment
-			"cancelUrl"=>"http://www.littlehelpersaws.com/ourStory",
+			"cancelUrl"=>"http://littlehelper.chainsaw:8000/buy/complete?hash=".
+			$data['hash'],
 			"requestEnvelope"=>[
 				"errorLanguage"=>"en_US",    // Language used to display errors
 				"detailLevel"=>"ReturnAll"   // Error detail level

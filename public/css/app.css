@@ -316,5 +316,7 @@ div.button.big {padding:0;}
     left:0;
 }
 
-.error { background-color: tomato; }
+.error { background-color: tomato;
+    display:block; margin-top:5px;
+    margin-bottom: 0; }
 
