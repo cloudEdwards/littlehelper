@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<meta name="publishable-key" content="{{Config::get('stripe.publishable-key')}}">
 	<!-- Favicon -->
-	<link rel="shortcut icon" href="{{ asset('favico.ico') }}">
+	<link rel="shortcut icon" href="{{ asset('favicon.ico') }}">
 	<!-- GOOGLE FONTS -->
 	<link href='http://fonts.googleapis.com/css?family=Belleza' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Bevan' rel='stylesheet' type='text/css'>
