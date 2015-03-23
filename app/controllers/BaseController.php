@@ -17,26 +17,14 @@ class BaseController extends Controller {
 
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of the Home Page.
 	 *
-	 * @return Response
+	 * @return makes Home page
 	 */
 	public function index()
 	{
 		return View::make('hello');
 	}
 
-
-
-	/**
-	 * Display the About page
-	 *
-	 * @return Response
-	 */
-	public function ourStory()
-	{
-		return View::make('ourstory.index');
-	}
-	
 
 }

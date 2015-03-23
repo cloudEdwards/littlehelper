@@ -13,9 +13,10 @@ class BuyNowController extends \BaseController {
 	}
 
 	/**
-	 * Display a listing of the resource.
+	 * Display a listing of form to 
+	 * input Shipping and purchase info.
 	 *
-	 * @return Response
+	 * @return Form for ordering
 	 */
 	public function index()
 	{
@@ -24,76 +25,15 @@ class BuyNowController extends \BaseController {
 
 
 	/**
-	 * Show the form for creating a new resource.
+	 * Display the shipping info input from User  
+	 * Allows User to confirm or edit shipping info
+	 * Shows purchase info:
+	 * tax, shipping and total
 	 *
-	 * @return Response
-	 */
-	public function create()
-	{	
-		return View::make('buy/create');
-	}
-
-
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 * @ Response
-	 *@param hash
-	 */
-
-	public function store()
-	{
-		$input = Input::all();
-
-		
-		$billing = App::make('tools\Billing\BillingInterface');
-
-		$confirmed_bill = $billing->charge( [
-			'email'=> Input::get('email'),
-			'card'=> Input::get('stripe-token'),
-			'hash'=> Input::get('hash')
-		]); 
-		
-		$order = $confirmed_bill['order'];
-		$email = $order['email'];
-		$msg = "Hello ";
-
-		// Send Customer Invoice
-		Mail::send('emails.invoice', ['invoice'=>$confirmed_bill], function($message) use ($email)
-			{
-			    $message->to($email, 'Cloud')->subject('Thank You!');
-			});
-		// Send Order to Manufacturer
-		Mail::send('emails.order', ['invoice'=>$confirmed_bill], function($message)  use ($email)
-			{
-			    $message->to($email, 'Cloud')->subject('New Order!');
-			});
-
-		// Send Text Message
-
-		$account_sid = 'ACb6f468752fecc4eb3ebf70648b71e347'; 
-		$auth_token = '4575f860099381b42b4a60bcac14f84f'; 
-		$client = new Services_Twilio($account_sid, $auth_token); 
-		 
-		$client->account->messages->create(array( 
-			'To' => "12503543711", 
-			'From' => "+13345641913", 
-			'Body' => "You have a New Order from LittleHelper.Chainsaw, check your email.",   
-		));
-
-
-		return View::make('buy/complete')->withOutput($confirmed_bill);
-	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @return Response
+	 * @return Confirm page
 	 */
 	public function confirm()
 	{
-
 		$rules = array(
 			'quantity'=> ['required', 'numeric'], 
 			'first-name'=>'required|alpha',
@@ -143,17 +83,20 @@ class BuyNowController extends \BaseController {
 		$bill->save();
 
 
-		return View::make('buy.create')
+		return View::make('buy.confirm')
 			->withData($input)
 			->withShippingRates($rates)
 			->withHash($invoiceHash)
 			->withTax($tax);
 	}
 
-		/**
-	 * Display the specified resource.
+
+	/**
+	 * Sends Request to Paypal for a payKey
+	 * Recieves payKey and redirects to a url
+	 * with the payKey as a GET variable
 	 *
-	 * @return Response
+	 * @return Redirects to PayPal checkout
 	 */
 	public function checkout()
 	{
@@ -167,14 +110,18 @@ class BuyNowController extends \BaseController {
 				.$result['payKey'];
 
 		return Redirect::to($url);
-		//return View::make('buy/paypal')->withUrl($url);
 	}
 
 
 	/**
-	 * Upon Completed Purchase,  
+	 * Upon Completed Purchase, Paypal returns to this url
+	 * With a Hash ID for the completed transaction
+	 * Transaction is marked completed in DB
+	 * Then emails and text messages are sent 
+	 * to both buyer and seller
+	 * containing the invoices for the transaction 
 	 *
-	 * @return Response
+	 * @return Complete page
 	 */
 	public function complete()
 	{	
@@ -214,6 +161,62 @@ class BuyNowController extends \BaseController {
 
 		return View::make('buy/complete');
 	}
+
+
+
+	/*  Method for Stripe Billing
+	/**
+	 * Store a newly created resource in storage.
+	 *
+	 *@param hash  -  uniqure hash code to id each transaction
+	 *
+	 *@return complete page
+	 *
+	 */
+	/*
+	public function store()
+		{
+			$input = Input::all();
+
+			
+			$billing = App::make('tools\Billing\BillingInterface');
+
+			$confirmed_bill = $billing->charge( [
+				'email'=> Input::get('email'),
+				'card'=> Input::get('stripe-token'),
+				'hash'=> Input::get('hash')
+			]); 
+			
+			$order = $confirmed_bill['order'];
+			$email = $order['email'];
+			$msg = "Hello ";
+
+			// Send Customer Invoice
+			Mail::send('emails.invoice', ['invoice'=>$confirmed_bill], function($message) use ($email)
+				{
+				    $message->to($email, 'Cloud')->subject('Thank You!');
+				});
+			// Send Order to Manufacturer
+			Mail::send('emails.order', ['invoice'=>$confirmed_bill], function($message)  use ($email)
+				{
+				    $message->to($email, 'Cloud')->subject('New Order!');
+				});
+
+			// Send Text Message
+
+			$account_sid = 'ACb6f468752fecc4eb3ebf70648b71e347'; 
+			$auth_token = '4575f860099381b42b4a60bcac14f84f'; 
+			$client = new Services_Twilio($account_sid, $auth_token); 
+			 
+			$client->account->messages->create(array( 
+				'To' => "12503543711", 
+				'From' => "+13345641913", 
+				'Body' => "You have a New Order from LittleHelper.Chainsaw, check your email.",   
+			));
+
+
+			return View::make('buy/complete')->withOutput($confirmed_bill);
+		}*/
 
 
 

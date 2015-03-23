@@ -22,10 +22,10 @@ Route::resource('/contact', 'MailController',['except'=>[
 	]);
 
 
+
 //Buy Now Page
-Route::resource('/buy', 'BuyNowController', ['except'=>[
-	'show','edit','destroy']
-	]);
+Route::get('/buy', ['as'=>'buy.index', 
+	'uses'=>'BuyNowController@index']);
 
 // Confirm Order
 Route::post('/buy/confirm', ['as'=>'buy.confirm', 
