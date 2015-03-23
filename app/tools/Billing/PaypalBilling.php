@@ -28,7 +28,7 @@ class PaypalBilling implements BillingInterface
 			"receiverList"=>[
 				"receiver"=>[ 
 					"amount"=>$total, // The payment amount
-					"email"=>"kumo.cloud@gmail.com" // The payment Receiver's email address
+					"email"=>"littlehelpersaws@gmail.com" // The payment Receiver's email address
 				]  
 			],
 

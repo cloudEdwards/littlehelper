@@ -163,7 +163,7 @@ class BuyNowController extends \BaseController {
 
 		$result = $result->charge(['hash'=>$input['hash']]);
 
-		$url = 'https://www.sandbox.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey='
+		$url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey='
 				.$result['payKey'];
 
 		return Redirect::to($url);
