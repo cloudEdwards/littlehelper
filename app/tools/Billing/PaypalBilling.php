@@ -59,7 +59,7 @@ class PaypalBilling implements BillingInterface
 			'X-PAYPAL-SECURITY-PASSWORD : ZKJZZC35WM46QCAF',
 			'X-PAYPAL-SECURITY-SIGNATURE : A7ErME.S7jXxqqfj1NWlnWs.56bKAIrMK0mJAalRt4taiBWH6uD0Gwy2',
 			// Global Sandbox Application ID
-			'X-PAYPAL-APPLICATION-ID : APP-0F9624499K4942523',
+			'X-PAYPAL-APPLICATION-ID : APP-1NM59315J2128684U',
 			// Input and output formats
 			'X-PAYPAL-REQUEST-DATA-FORMAT : JSON',
 			'X-PAYPAL-RESPONSE-DATA-FORMAT : JSON ')                                                                      
@@ -67,6 +67,7 @@ class PaypalBilling implements BillingInterface
 
 		$resultJson = curl_exec($ch);
 		$output = json_decode($resultJson);
+		
 		$payKey = $output->payKey;
 
 		return [
