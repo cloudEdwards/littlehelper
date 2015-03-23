@@ -4,16 +4,17 @@
 
 	<h2>Welcome!</h2>
 
-	<img id="chainsaw" src="img/chainsaw.png" alt="a wooden toy chainsaw">
+	<img id="chainsaw"  class="main" src="img/chainsaw.png" alt="a wooden toy chainsaw">
 
 
 <div class="home">
 
 	<div class="textblock">
-		<p>Handmade Wooden Toy Chainsaw ~ $85.00 Cad. + Shipping and Tax</p>           
+		<p>Handmade Wooden Toy Chainsaw ~ $85.00 Cad. + Shipping and Tax</p>
+		<p> Length is 18 inches. </p>           
 	</div>
 
-	<img id="chainsaw" src="img/chainsaw2.png" alt="a wooden toy chainsaw">
+	<img id="chainsaw" class="main" src="img/chainsaw2.png" alt="a wooden toy chainsaw">
 
 	<div id="holder">
 		<img class="bio" src="/img/angelbio.jpg"></img>

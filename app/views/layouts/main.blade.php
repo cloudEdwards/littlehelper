@@ -5,6 +5,11 @@
 	{{ HTML::style('css/normalize.css'); }}
 
 	{{HTML::style('css/app.css'); }}
+	{{HTML::style('css/main.css'); }}
+	{{HTML::style('css/forms.css'); }}
+	{{HTML::style('css/nav.css'); }}
+	{{HTML::style('css/responsive.css'); }}
+
 
 	<meta charset="utf-8">
 	<meta name="publishable-key" content="{{Config::get('stripe.publishable-key')}}">
@@ -16,12 +21,14 @@
 	<link href='http://fonts.googleapis.com/css?family=Metamorphous' rel='stylesheet' type='text/css'>
 	<link href='http://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
 
-	<script src="https://js.stripe.com/v2/"></script>
+	<!-- JS STRIPE <script src="https://js.stripe.com/v2/"></script>  -->
 	
 </head>
 <body>
 
 <div class="wrapper">
+
+<h1>Little Helper Chainsaws</h1>
 
 <div class="nav">		
 	<nav>
@@ -33,7 +40,6 @@
 	</nav>
 </div>
 
-<h1>Little Helper Chainsaws</h1>
 
 <div class="content">
 

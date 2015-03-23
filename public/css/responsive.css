@@ -16,10 +16,72 @@ make textblock more narrow with smaller screen width
 */
 
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1100px) {
 	
-	nav {width:30%;}
+	nav { 
+		position: relative;
+		width: 100%;
+		border-top: solid saddlebrown;
+		background-size: 100% auto;
+		margin: 0;
+		font-size: 30pt;
+	}
 
-	.textblock { width:65%;}
+	nav a {
+    	display: inline-block;
+	}
 
+	.textblock { 
+		width: 75%; 
+		font-size: 16pt; 
+		font-size: 2vw; 
+	}
+	.textblock.bio.large.main { width: 85%; }
+
+	.textblock.buy { font-size: 5vw; }
+
+	img.bio { width: 40vw; margin: 5px auto;}
+	
+	img#chainsaw { width: 40vw; margin: 5px auto;}
+
+	img#chainsaw.main { width: 80vw; margin: 5px auto;}
+	
+
+
+}
+
+
+
+@media screen and (max-width: 820px) {
+
+	nav a { font-size: 5.2vw; }
+
+	.textblock { 
+		font-size: 12pt; 
+		font-size: 2vw; 
+		margin: 5px auto;
+	}
+
+	.textblock.buy a { font-size: 6vw; }
+
+	#holder>.textblock.bio { width: 50%;}
+}
+
+
+@media screen and (max-width: 650px) {
+
+	.textblock { 
+		font-size: 16pt; 
+		font-size: 3.3vw; 
+	}
+}
+
+@media screen and (max-width: 500px) {
+
+	.textblock { 
+		font-size: 18pt; 
+		font-size: 4vw; 
+	}
+
+	.textblock.buy a { font-size: 8vw; }
 }

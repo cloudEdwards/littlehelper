@@ -1,0 +1,146 @@
+
+
+/****** MAIN Styles:
+*
+* Text Block Styling
+* Home Page Layout
+* Images
+* Buttons
+*
+*/
+
+
+/****** Text Block Styling */
+
+.textblock { 
+    display:block;
+    color:rgb(56, 38, 16);
+    background-color: hsla(29, 50%, 50%, .7); 
+    width: 60%; 
+    border-radius: 5px;
+    padding: 10px; 
+    margin: 20px auto;
+    font-family: "Roboto", "sans-serif";
+    font-size: 25px;
+    text-shadow: 0 0 1px hsl(0,12%,25%);
+    line-height: 100%;
+    background-image: url("/img/woodgrain1OilBig.jpg");
+    background-size: 100% auto;
+}
+
+.textblock.top { margin-left: 20%; margin-right: auto; }
+
+.textblock.buy a { 
+    color:saddlebrown; 
+    font-size: 50px;
+    text-shadow: 1px 3px 2px hsl(0, 5%, 6%);
+    transition: text-shadow .4s, color .4s;
+}
+
+.textblock.buy:hover a,.textblock.buy:focus a{
+    color:maroon;
+    text-shadow: 1px 3px 6px hsl(-10, 80%, 6%)
+}
+
+.textblock#left { text-align: left;}
+
+.textblock.bio { width: 10%; }
+
+#holder>.textblock.bio { width: 30%; }
+
+.textblock.bio.large {
+
+    display:inline-block;
+    width: 30%;
+    margin: 10px 5px;
+}
+.textblock.bio p { margin: 1px 1px; }
+
+.textblock.bio.large.main {
+    margin: 10px 5%;
+    width: 45%;
+}
+
+
+
+
+/****** Home Page Layout */
+
+.home > .textblock.top{ 
+    margin: 5px auto;  
+    float:right; 
+    display:inline-block;
+}
+
+#holder { 
+    text-align: center;  
+    display:inline-block;
+}
+
+.home { margin: 0 auto; }
+
+.home li { display: inline-block; margin:10px 10px;}
+
+
+
+
+/****** Images */
+
+img.bio { 
+    border-radius: 50%; 
+    border-style: solid; 
+    border-width: 10px;
+    border-color: peru;
+    width: 35vw; 
+}
+
+#chainsaw {  
+    margin: 40px auto;
+    margin-bottom: 10px;
+    
+}
+
+img.home#chainsaw {margin: 10px 10px;}
+
+#grampa { 
+    border-radius:20px;
+    border: solid peru;
+    margin: 10px auto;
+    
+}
+
+
+
+/****** Buttons */
+
+button, .button { 
+    background-color: wheat;
+    margin: 15px auto; 
+    width: 80px;
+    border: solid;
+    border-color: white grey grey white;
+    border-style: groove;
+    padding:10px;
+    text-align: center;
+    font-size: 30px;
+    color: saddlebrown;
+    -webkit-transition: background-color .5s, color .5s;
+    transition: background-color .5s, color .5s;
+}
+
+a.button { display: block;}
+
+.button.big { 
+    margin: 20px auto;
+    margin-bottom: 0;
+    width:100%;
+    text-align: center;
+    font-size: 25px;
+    border-radius: 0 0 5px 5px;
+}
+div.button.big {padding:0;}
+
+.button:hover, .button:focus { 
+    background-color: saddlebrown; 
+    color:wheat; 
+} 
