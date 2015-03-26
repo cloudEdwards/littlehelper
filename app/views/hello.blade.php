@@ -10,7 +10,8 @@
 <div class="home">
 
 	<div class="textblock">
-		<p>Handmade Wooden Toy Chainsaw ~ $85.00 Cad. + Shipping and Tax</p>
+		<p>Handmade Wooden Toy Chainsaw ~ ${{
+			number_format($price,2) }} Cad. + Shipping and Tax</p>
 		<p> Length is 18 inches. </p>           
 	</div>
 

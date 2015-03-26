@@ -122,7 +122,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'tools\Providers\BillingServiceProvider',
-		'tools\Providers\ShippingServiceProvider'
+		'tools\Providers\ShippingServiceProvider',
 	),
 
 	/*

@@ -22,8 +22,10 @@
     {{ Form:: label ('subject', 'Subject') }}
     {{ Form:: text ('subject','' ) }}
 
-    {{ Form:: label ('message', 'Message*' )}}
-    {{ Form:: textarea ('message', '')}}
+    <div id="msg">
+        {{ Form:: label ('message', 'Message*' )}}
+        {{ Form:: textarea ('message', '')}}
+    </div>
 
     {{ Form::reset('Clear', array('class' => 'button big')) }}
     {{ Form::submit('Send', array('class' => 'button big')) }}

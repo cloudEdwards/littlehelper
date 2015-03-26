@@ -2,14 +2,16 @@
 /* Form Styling  */
 
 
-.forms { background-image: url("/img/woodgrain1OilBig.jpg"); 
+.forms { 
+    background-image: url("/img/woodgrain1OilBig.jpg"); 
     background-size: 100% auto;
     margin: 0 auto; 
-    margin-left: 25%;
+
     width: 60%;
     text-align: left;
     border-radius: 5px;
 }
+
 
 form, form div { display: block;}
 
@@ -22,7 +24,7 @@ select, label, input,textarea {
     margin:5px;
     padding:5px;
     margin-left: 25px;
-    width: auto;
+    width:40%;
     color: maroon;
     font-size: 14px;
     font-family: 'Metamorphous', "Serif";
@@ -31,10 +33,10 @@ select, label, input,textarea {
 
 input[type="text"], input[type="password"], input[type="date"], input[type="datetime"], input[type="datetime-local"], input[type="month"], input[type="week"], input[type="email"], input[type="number"], input[type="search"], input[type="tel"], input[type="time"], input[type="url"], input[type="color"], textarea {
     display:inline-block;
-    width: auto;
+    width:40%;
 }
 
-#quantity { margin-right: 240px; margin-top: 40px; }
+#quantity { width:10%;}
 
 input[type="text"] {  font-size: 20px;    color: maroon;
     font-family: 'Metamorphous', "Serif";
@@ -46,7 +48,7 @@ input[type="submit"] {  border-radius:7px; margin-top: 0; }
 
 label { 
     color: maroon;  
-    width: 300px;
+    width:40%;
     font-size: 20px;
     font-family: 'Metamorphous', "Serif";
     text-shadow: 0 0 1px hsl(0,12%,25%);  
@@ -59,7 +61,11 @@ th {text-align: left;}
 
 .small.form { width: 80px; margin-left: 5px; }
 label.small.form[for='apt'] { margin-left: 25px; }
-input#apt, input#pobox, input#rr { width: 80px; margin:0;}
+
+input#apt, input#pobox, input#rr { 
+    width: 10%; 
+    margin:0;
+}
 
 
 
@@ -69,3 +75,11 @@ input#apt, input#pobox, input#rr { width: 80px; margin:0;}
 .forms.credit>label  { margin: 10px;}
 #cvc { width: 140px;}
 #cvc input { width: 100px; }
+
+
+
+/*  message form for contact page  */
+
+#msg>label { display:block;}
+
+#msg>textarea { display:block; width:87.5%; }

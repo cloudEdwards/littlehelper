@@ -5,7 +5,6 @@ use Prices;
 
 class BuyNowController extends \BaseController {
 
-
 	// protects site from cross site forgery
 	public function __construct() {
 
@@ -25,15 +24,16 @@ class BuyNowController extends \BaseController {
 
 
 	/**
-	 * Display the shipping info input from User  
+	 * Displays the User Input: Shipping Address.  
 	 * Allows User to confirm or edit shipping info
-	 * Shows purchase info:
-	 * tax, shipping and total
+	 * Shows purchase amounts:
+	 * Tax, shipping and total charge.
 	 *
 	 * @return Confirm page
 	 */
 	public function confirm()
 	{
+		// Validation Rules
 		$rules = array(
 			'quantity'=> ['required', 'numeric'], 
 			'first-name'=>'required|alpha',
@@ -41,30 +41,51 @@ class BuyNowController extends \BaseController {
 			'phone-number'=> ['required', 'min:10'], 
 			'city'=> ['required', 'alpha'], 
 			'address'=>'required',
-			'province'=> 'required|alpha', 
-			'country'=>'required|alpha',
+			'province'=> 'required', 
+			'country'=>'required',
 			'postal-code'=> ['required', 'alpha_num', 'min:6']
 		 );
 
-		$input = Input::all();
-		$input['postal-code']= strtoupper(preg_replace('/\s+/', "", 
-								$input['postal-code']));
+		// Sanitize User Input
+		$input = [];
+		foreach(Input::all() as $key=>$val) {
+			$input[$key]= e($val);
+		} 
 
+		// Converts to Valid Postal Code
+		$input['postal-code']= 
+			strtoupper(preg_replace(
+				'/\s+/', "", $input['postal-code']));
+		
+		// Validate User Input
 		$validator= Validator::make($input, $rules);
 
 		if ($validator->fails()) {
 			return Redirect::route('buy.index')->withErrors($validator->messages())->withInput($input);
 		}
 
+		// Instantiate Canada Post API Object
 		$shipping = App::make('tools\Shipping\ShippingInterface');
+		
+		// Calculate Shipping Rates with Postal Code 
 		$rates = $shipping->getRates($input['postal-code'],$input['quantity']);
 
-		$invoiceHash = Hash::make('secret');
-
+		// *** Generate Unique Id for this transaction		
+		// Generate Random Number as String
+		$rand = (string) rand(1000,9999);
+		// Create Hash Code and take a substring.
+		$hashCode = substr(Hash::make('secret'),-4,4);
+		// Join number and hash to make 8 digit code
+		$invoiceHash = $hashCode.$rand;
+		// Get price from database
 		$price = Prices::findOrFail(1)['attributes']['price'];
+		// Multiply by quantity
 		$subTotal = $price * $input['quantity'];
+		// Sales Tax at 12%
 		$tax = $subTotal * 0.12;
 
+		// Billing Log Model for DB
+		// Add values and save to database
 		$bill = new BillingLog();
 		$bill->id= $invoiceHash;
 		$bill->shipping=$rates[0][1];
@@ -99,16 +120,27 @@ class BuyNowController extends \BaseController {
 	 * @return Redirects to PayPal checkout
 	 */
 	public function checkout()
-	{
-		$input = Input::all();
+	{	
+		// Sanitize User Input
+		$input = [];
+		foreach(Input::all() as $key=>$val) {
+			$input[$key]= $val;
+		}
 
+		// Instantiate PayPal API 
 		$result = App::make('tools\Billing\BillingInterface');
-
+		
+		// Make Request to PayPal API
+		// Passes the transaction ID to pull
+		// the transaction info. from the database
+		// Returns a Pay Key to point to PayPal transaction
 		$result = $result->charge(['hash'=>$input['hash']]);
 
+		// Append the Pay Key to the PayPal End Point
 		$url = 'https://www.paypal.com/cgi-bin/webscr?cmd=_ap-payment&paykey='
 				.$result['payKey'];
 
+		// Redirect Client to PayPal for Checkout		
 		return Redirect::to($url);
 	}
 
@@ -125,99 +157,49 @@ class BuyNowController extends \BaseController {
 	 */
 	public function complete()
 	{	
-
-		$hash = Input::get('hash');
+		// Get transaction ID returning from PayPal
+		$hash = e(Input::get('hash'));
+		// Find Transaction details from Database
 		$order = BillingLog::findOrFail($hash);
+		// Confirm Transation has been compleated
 		$order->completed = 'true';
+
 		$order->save();
 
+		// Get Customer Email from database
 		$confirmed_bill=$order['attributes'];
 		$email = $confirmed_bill['email'];
-		// !!!*!*!*!****!*!Replace with Angels Email
-		$shopEmail = 'kumo.cloud@gmail.com';
 		
-		// Send Customer Invoice
+		// Manufacturers Email  and Phone
+		$shopEmail = 'angelheartsongs@gmail.com';
+		$shopPhone = '12505090543';
+
+		// Send Customer an Invoice
 		Mail::send('emails.invoice', ['invoice'=>$confirmed_bill], function($message) use ($email)
 			{
 			    $message->to($email, 'Cloud')->subject('Thank You!');
 			});
+
 		// Send Order to Manufacturer
 		Mail::send('emails.order', ['invoice'=>$confirmed_bill], function($message)  use ($shopEmail)
 			{
 			    $message->to($shopEmail, 'Cloud')->subject('New Order!');
 			});
 
-		// Send Text Message
-
-		$account_sid = 'ACb6f468752fecc4eb3ebf70648b71e347'; 
-		$auth_token = '4575f860099381b42b4a60bcac14f84f'; 
+		// Send Text Message to Maufacturer
+		$account_sid = $_ENV['TWILIO_ID']; 
+		$auth_token = $_ENV['TWILIO_AUTH']; 
 		$client = new Services_Twilio($account_sid, $auth_token); 
 		 
 		$client->account->messages->create(array( 
-			'To' => "12503543711", 
+			'To' => $shopPhone, 
 			'From' => "+13345641913", 
 			'Body' => "You have a New Order from LittleHelper.Chainsaw, check your email.",   
 		));
 
+		// Takes Client to Thank You page
 		return View::make('buy/complete');
 	}
-
-
-
-	/*  Method for Stripe Billing
-	/**
-	 * Store a newly created resource in storage.
-	 *
-	 *@param hash  -  uniqure hash code to id each transaction
-	 *
-	 *@return complete page
-	 *
-	 */
-	/*
-	public function store()
-		{
-			$input = Input::all();
-
-			
-			$billing = App::make('tools\Billing\BillingInterface');
-
-			$confirmed_bill = $billing->charge( [
-				'email'=> Input::get('email'),
-				'card'=> Input::get('stripe-token'),
-				'hash'=> Input::get('hash')
-			]); 
-			
-			$order = $confirmed_bill['order'];
-			$email = $order['email'];
-			$msg = "Hello ";
-
-			// Send Customer Invoice
-			Mail::send('emails.invoice', ['invoice'=>$confirmed_bill], function($message) use ($email)
-				{
-				    $message->to($email, 'Cloud')->subject('Thank You!');
-				});
-			// Send Order to Manufacturer
-			Mail::send('emails.order', ['invoice'=>$confirmed_bill], function($message)  use ($email)
-				{
-				    $message->to($email, 'Cloud')->subject('New Order!');
-				});
-
-			// Send Text Message
-
-			$account_sid = 'ACb6f468752fecc4eb3ebf70648b71e347'; 
-			$auth_token = '4575f860099381b42b4a60bcac14f84f'; 
-			$client = new Services_Twilio($account_sid, $auth_token); 
-			 
-			$client->account->messages->create(array( 
-				'To' => "12503543711", 
-				'From' => "+13345641913", 
-				'Body' => "You have a New Order from LittleHelper.Chainsaw, check your email.",   
-			));
-
-
-			return View::make('buy/complete')->withOutput($confirmed_bill);
-		}*/
-
 
 
 }

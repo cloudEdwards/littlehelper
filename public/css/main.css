@@ -46,6 +46,8 @@
 
 .textblock.bio { width: 10%; }
 
+#holder ul { padding:0; }
+
 #holder>.textblock.bio { width: 30%; }
 
 .textblock.bio.large {

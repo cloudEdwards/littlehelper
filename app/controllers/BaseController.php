@@ -1,5 +1,7 @@
 <?php
 
+use Prices;
+
 class BaseController extends Controller {
 
 	/**
@@ -23,7 +25,8 @@ class BaseController extends Controller {
 	 */
 	public function index()
 	{
-		return View::make('hello');
+		$price = Prices::findOrFail(1);
+		return View::make('hello')->withPrice($price->price);
 	}
 
 
