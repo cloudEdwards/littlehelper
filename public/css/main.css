@@ -17,6 +17,7 @@
     color:rgb(56, 38, 16);
     background-color: hsla(29, 50%, 50%, .7); 
     width: 60%; 
+    border: solid saddlebrown;
     border-radius: 5px;
     padding: 10px; 
     margin: 20px auto;
@@ -97,16 +98,15 @@ img.bio {
 }
 
 #chainsaw {  
-    margin: 40px auto;
+    margin: 0 auto;
     margin-bottom: 10px;
-    
 }
 
 img.home#chainsaw {margin: 10px 10px;}
 
 #grampa { 
     border-radius:20px;
-    border: solid peru;
+    border: solid saddlebrown;
     margin: 10px auto;
     
 }

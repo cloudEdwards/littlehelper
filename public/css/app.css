@@ -24,12 +24,12 @@ body {
     background-image: url("/img/greenTexture1.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
-    background-size: 100%;
+    background-size: auto 100%;
     text-align: center;
     width:100%;
     height:100%;
 }
-h1 { font-size: 5vw; }
+h1 { font-size: 5vw; border-bottom: solid saddlebrown;}
 h1, h2 { 
     margin: 0;
     padding: 20px;
@@ -41,14 +41,19 @@ h1, h2 {
     background-image: url("/img/woodgrain1OilBig.jpg"); 
     background-size: 100% auto;
     text-shadow: 1px 0 2px hsl(0,3%,55%);
-    }
+}
 
-h2 {margin:20px auto; width: 300px; border-radius: 7px; }
+h2 {
+    margin:20px auto; 
+    width: 300px; 
+    border-radius: 7px;
+    border: solid saddlebrown; 
+}
 
 
 a { color:saddlebrown; text-decoration: none; padding: 10px;}
 
-a:visited { color: hsl(0,5%,40%); }
+a:visited { color: linen; }
 
 a:hover. a:focus  { color: wheat;}
 
@@ -84,5 +89,7 @@ footer div { color:black;}
     background-color: tomato;
     display:block; margin-top:5px;
     margin-bottom: 0; 
+    font-family: serif "Roboto";
+    font-size: 16pt;
 }
 

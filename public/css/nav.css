@@ -12,6 +12,8 @@ nav {
     background-size: auto 100%;
 	width: 15%;
     border-radius: 7px;
+    border: solid saddlebrown;
+
 }
 
 nav ul {

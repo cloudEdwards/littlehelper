@@ -6,7 +6,7 @@
     background-image: url("/img/woodgrain1OilBig.jpg"); 
     background-size: 100% auto;
     margin: 0 auto; 
-
+    border: solid saddlebrown;
     width: 60%;
     text-align: left;
     border-radius: 5px;
