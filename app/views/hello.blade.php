@@ -26,9 +26,9 @@
 
 		<div class="textblock bio large main">
 			<p>Hi, I'm Angel.</p>
-			<p>Twenty-four years ago I built two toy chainsaws for my kids. With those saws, we had so much fun together getting firewood, and playing around. Just hanging together, building fond memories. Now years later in my retirement, I fell inlove with these saws all over again.  I have decided to build them as a small scale business by the name of  <strong>LITTLE HELPER CHAINSAWS</strong>.</p> 
+			<p>Twenty-four years ago I built two toy chainsaws for my kids. With those saws, we had so much fun together getting firewood, and playing around. Just hanging together, building fond memories. Now years later in my retirement, I fell in love with these saws all over again.  I have decided to build them as a small scale business by the name of  <strong>LITTLE HELPER CHAINSAWS</strong>.</p> 
 
-			<p>The name suggest exactly what these little toys can do...getting our children to have fun helping and working with mom and dad - out in nature, away from the computer. All you parents out here who long for more quality time with your kids...these saws may be just the ticket!</p>
+			<p>The name suggest exactly what these little toys can do...getting our children to have fun helping and working with mom and dad - out in nature, away from the computer. All you parents out there who long for more quality time with your kids...these saws may be just the ticket!</p>
 			
 			<p>Thank you for your interest, and should you purchase one for your child...may you enjoy it as much as he or she!</p> 
 

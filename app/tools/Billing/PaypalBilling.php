@@ -21,6 +21,7 @@ class PaypalBilling implements BillingInterface
 		$subTotal = number_format(floatval(($price * $orderList['quantity'])),2);
 		$total = $subTotal + $shipping + $tax;
 	
+		$email = "angelheartsongs@gmail.com";
 
 		$dataLoad = array(
 			"actionType"=>"PAY",    // Specify the payment action
@@ -28,7 +29,7 @@ class PaypalBilling implements BillingInterface
 			"receiverList"=>[
 				"receiver"=>[ 
 					"amount"=>$total, // The payment amount
-					"email"=>"littlehelpersaws@gmail.com" // The payment Receiver's email address
+					"email"=>$email // The payment Receiver's email address
 				]  
 			],
 
