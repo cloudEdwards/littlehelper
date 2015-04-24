@@ -171,8 +171,8 @@ class BuyNowController extends \BaseController {
 		$email = $confirmed_bill['email'];
 		
 		// Manufacturers Email  and Phone
-		$shopEmail = 'angelheartsongs@gmail.com';
-		$shopPhone = '12505090543';
+		$shopEmail = 'test@gmail.com';
+		$shopPhone = '12501112222'; // sample phone number
 
 		// Send Customer an Invoice
 		Mail::send('emails.invoice', ['invoice'=>$confirmed_bill], function($message) use ($email)
